@@ -8,6 +8,9 @@ public class Debt {
     private String description;
     private long date;
     private boolean isPaid;
+    private Long dueDate;
+    private Long reminderTime;
+    private String calendarEventId;
 
     public Debt() {}
 
@@ -40,4 +43,13 @@ public class Debt {
 
     public boolean isPaid() { return isPaid; }
     public void setPaid(boolean paid) { isPaid = paid; }
+
+    public Long getDueDate() { return dueDate; }
+    public void setDueDate(Long dueDate) { this.dueDate = dueDate; }
+
+    public Long getReminderTime() { return reminderTime; }
+    public void setReminderTime(Long reminderTime) { this.reminderTime = reminderTime; }
+
+    public String getCalendarEventId() { return calendarEventId; }
+    public void setCalendarEventId(String calendarEventId) { this.calendarEventId = calendarEventId; }
 }

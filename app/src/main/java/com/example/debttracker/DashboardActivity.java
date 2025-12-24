@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.debttracker.database.DatabaseHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -15,6 +16,7 @@ import java.util.Locale;
 public class DashboardActivity extends AppCompatActivity {
     private TextView tvTotalBalance, tvTotalReceivable, tvTotalPayable;
     private CardView cardReceivable, cardPayable;
+    private FloatingActionButton fabSettings;
     private DatabaseHelper dbHelper;
 
     @Override
@@ -40,6 +42,7 @@ public class DashboardActivity extends AppCompatActivity {
         tvTotalPayable = findViewById(R.id.tvTotalPayable);
         cardReceivable = findViewById(R.id.cardReceivable);
         cardPayable = findViewById(R.id.cardPayable);
+        fabSettings = findViewById(R.id.fabSettings);
     }
 
     private void setupCardClicks() {
@@ -52,6 +55,11 @@ public class DashboardActivity extends AppCompatActivity {
         cardPayable.setOnClickListener(v -> {
             Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
             intent.putExtra("TAB", 1); // Borçlar sekmesi
+            startActivity(intent);
+        });
+
+        fabSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
     }
