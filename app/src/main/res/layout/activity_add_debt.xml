@@ -45,7 +45,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Kişi Adı"
+                android:hint="Kisi Adi"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -62,7 +62,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tutar (₺)"
+                android:hint="Tutar (TL)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -79,7 +79,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Açıklama (Opsiyonel)"
+                android:hint="Aciklama (Opsiyonel)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -94,6 +94,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Tarih -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,7 +107,7 @@
                 android:id="@+id/tvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15 Aralık 2024"
+                android:text="15 Aralik 2024"
                 android:textSize="18sp"
                 android:textColor="#212121"
                 android:padding="12dp"
@@ -117,8 +118,55 @@
                 android:id="@+id/btnSelectDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tarih Seç"
+                android:text="Tarih Sec"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Vade Tarihi -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vade Tarihi (Opsiyonel)"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDueDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Secilmedi"
+                android:textSize="18sp"
+                android:textColor="#212121"
+                android:padding="12dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnSelectDueDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vade Tarihi Sec"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Takvim ve Bildirim Secenekleri -->
+            <CheckBox
+                android:id="@+id/cbAddToCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Takvime ekle"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbEnableNotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hatirlatici bildirim gonder"
+                android:textSize="16sp"
+                android:visibility="gone"
                 android:layout_marginBottom="24dp"/>
 
             <Button

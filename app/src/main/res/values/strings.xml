@@ -1,3 +1,58 @@
 <resources>
-    <string name="app_name">Debt Tracker</string>
+    <string name="app_name">Borc Takip</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Borc Takip</string>
+    <string name="overview">Genel Bakis</string>
+    <string name="net_status">Net Durum</string>
+    <string name="receivables">Alacaklarim</string>
+    <string name="payables">Borclarim</string>
+
+    <!-- Add Debt -->
+    <string name="add_receivable">Yeni Alacak Ekle</string>
+    <string name="add_payable">Yeni Borc Ekle</string>
+    <string name="person_name">Kisi Adi</string>
+    <string name="amount">Tutar (TL)</string>
+    <string name="description">Aciklama (Opsiyonel)</string>
+    <string name="date">Tarih</string>
+    <string name="select_date">Tarih Sec</string>
+    <string name="due_date">Vade Tarihi (Opsiyonel)</string>
+    <string name="select_due_date">Vade Tarihi Sec</string>
+    <string name="not_selected">Secilmedi</string>
+    <string name="add_to_calendar">Takvime ekle</string>
+    <string name="enable_notification">Hatirlatici bildirim gonder</string>
+    <string name="save">Kaydet</string>
+    <string name="saved">Kaydedildi</string>
+
+    <!-- Debt Detail -->
+    <string name="details">Detaylar</string>
+    <string name="person">Kisi</string>
+    <string name="type">Tur</string>
+    <string name="receivable">Alacak</string>
+    <string name="payable">Borc</string>
+    <string name="no_description">Aciklama yok</string>
+    <string name="mark_as_paid">Odendi Olarak Isaretle</string>
+    <string name="marked_as_paid">Odendi olarak isaretlendi</string>
+    <string name="share">Paylas</string>
+    <string name="delete">Sil</string>
+    <string name="deleted">Silindi</string>
+    <string name="delete_confirmation">Bu kaydi silmek istediginize emin misiniz?</string>
+    <string name="cancel">Iptal</string>
+
+    <!-- Validation -->
+    <string name="name_required">Isim gerekli</string>
+    <string name="amount_required">Tutar gerekli</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Borc Hatirlatici</string>
+    <string name="notification_channel_desc">Borc odeme hatirlatmalari</string>
+    <string name="tomorrow_payment">Yarin Odeme Gunu!</string>
+    <string name="today_payment">Bugun Odeme Gunu!</string>
+    <string name="notification_permission_denied">Bildirim izni verilmedi</string>
+
+    <!-- Calendar -->
+    <string name="calendar_not_found">Takvim uygulamasi bulunamadi</string>
+
+    <!-- Share Message -->
+    <string name="share_title">Borc Bilgisi</string>
 </resources>
