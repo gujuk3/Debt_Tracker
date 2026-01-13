@@ -33,7 +33,7 @@ import java.util.Locale;
 
 public class AddDebtActivity extends AppCompatActivity {
     private EditText etPersonName, etAmount, etDescription;
-    private TextView tvDate, tvTitle, tvDueDate;
+    private TextView tvDate, tvTitle, tvDueDate, tvCheckboxHint;
     private Button btnSave, btnSelectDate, btnSelectDueDate;
     private CheckBox cbAddToCalendar, cbEnableNotification;
     private Toolbar toolbar;
@@ -81,6 +81,7 @@ public class AddDebtActivity extends AppCompatActivity {
         btnSelectDueDate = findViewById(R.id.btnSelectDueDate);
         cbAddToCalendar = findViewById(R.id.cbAddToCalendar);
         cbEnableNotification = findViewById(R.id.cbEnableNotification);
+        tvCheckboxHint = findViewById(R.id.tvCheckboxHint);
 
         calendar = Calendar.getInstance();
         dueDateCalendar = Calendar.getInstance();
@@ -193,11 +194,12 @@ public class AddDebtActivity extends AppCompatActivity {
 
     private void updateDueDateDependentViews() {
         boolean hasDueDate = selectedDueDate > 0;
-        cbAddToCalendar.setVisibility(hasDueDate ? View.VISIBLE : View.GONE);
-        cbEnableNotification.setVisibility(hasDueDate ? View.VISIBLE : View.GONE);
+        cbAddToCalendar.setEnabled(hasDueDate);
+        cbEnableNotification.setEnabled(hasDueDate);
+        tvCheckboxHint.setVisibility(hasDueDate ? View.GONE : View.VISIBLE);
 
         if (!hasDueDate) {
-            tvDueDate.setText("Seçilmedi");
+            tvDueDate.setText("Secilmedi");
             cbAddToCalendar.setChecked(false);
             cbEnableNotification.setChecked(false);
         }
