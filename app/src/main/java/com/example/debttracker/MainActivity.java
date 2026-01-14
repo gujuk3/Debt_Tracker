@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -249,15 +250,25 @@ public class MainActivity extends AppCompatActivity {
         document.finishPage(page);
 
         try {
-            File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            // Uygulama cache dizinine kaydet
+            File cacheDir = new File(getCacheDir(), "exports");
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs();
+            }
             String fileName = "borc_takip_" + System.currentTimeMillis() + ".pdf";
-            File file = new File(downloadsDir, fileName);
+            File file = new File(cacheDir, fileName);
             FileOutputStream fos = new FileOutputStream(file);
             document.writeTo(fos);
             fos.close();
             document.close();
 
-            Toast.makeText(this, "PDF kaydedildi: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            // FileProvider ile paylaş
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("application/pdf");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(shareIntent, "PDF'i Kaydet/Paylaş"));
         } catch (IOException e) {
             Toast.makeText(this, "PDF oluşturma hatası: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -293,14 +304,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
-            File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            // Uygulama cache dizinine kaydet
+            File cacheDir = new File(getCacheDir(), "exports");
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs();
+            }
             String fileName = "borc_takip_" + System.currentTimeMillis() + ".csv";
-            File file = new File(downloadsDir, fileName);
+            File file = new File(cacheDir, fileName);
             FileWriter writer = new FileWriter(file);
             writer.write(csv.toString());
             writer.close();
 
-            Toast.makeText(this, "CSV kaydedildi: " + file.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            // FileProvider ile paylaş
+            Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/csv");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivity(Intent.createChooser(shareIntent, "CSV'yi Kaydet/Paylaş"));
         } catch (IOException e) {
             Toast.makeText(this, "CSV oluşturma hatası: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }

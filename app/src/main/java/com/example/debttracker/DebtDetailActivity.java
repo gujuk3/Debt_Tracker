@@ -19,8 +19,14 @@ import com.example.debttracker.database.Debt;
 import com.example.debttracker.notification.NotificationHelper;
 import com.example.debttracker.service.CurrencyService;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.google.zxing.common.BitMatrix;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -174,10 +180,10 @@ public class DebtDetailActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", new Locale("tr"));
 
         StringBuilder qrContent = new StringBuilder();
-        qrContent.append("BORÇ BİLGİSİ\n");
-        qrContent.append("Kişi: ").append(debt.getPersonName()).append("\n");
-        qrContent.append("Tutar: ").append(currencyFormat.format(debt.getAmount())).append("\n");
-        qrContent.append("Tür: ").append(debt.getType().equals("RECEIVABLE") ? "Alacak" : "Borç").append("\n");
+        qrContent.append("BORC BILGISI\n");
+        qrContent.append("Kisi: ").append(debt.getPersonName()).append("\n");
+        qrContent.append("Tutar: ").append(String.format(Locale.US, "%.2f TL", debt.getAmount())).append("\n");
+        qrContent.append("Tur: ").append(debt.getType().equals("RECEIVABLE") ? "Alacak" : "Borc").append("\n");
         qrContent.append("Tarih: ").append(dateFormat.format(new Date(debt.getDate())));
 
         if (debt.getDueDate() > 0) {
@@ -185,8 +191,23 @@ public class DebtDetailActivity extends AppCompatActivity {
         }
 
         try {
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap(qrContent.toString(), BarcodeFormat.QR_CODE, 400, 400);
+            // UTF-8 encoding ile QR kod olustur
+            Map<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+            hints.put(EncodeHintType.MARGIN, 2);
+
+            MultiFormatWriter writer = new MultiFormatWriter();
+            BitMatrix bitMatrix = writer.encode(qrContent.toString(), BarcodeFormat.QR_CODE, 400, 400, hints);
+
+            int width = bitMatrix.getWidth();
+            int height = bitMatrix.getHeight();
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    bitmap.setPixel(x, y, bitMatrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+                }
+            }
 
             ImageView imageView = new ImageView(this);
             imageView.setImageBitmap(bitmap);
@@ -198,7 +219,7 @@ public class DebtDetailActivity extends AppCompatActivity {
                     .setPositiveButton("Tamam", null)
                     .show();
         } catch (WriterException e) {
-            Toast.makeText(this, "QR kod oluşturulamadı", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "QR kod olusturulamadi", Toast.LENGTH_SHORT).show();
         }
     }
 
