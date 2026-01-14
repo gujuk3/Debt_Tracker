@@ -12,11 +12,11 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Baslik -->
+        <!-- Başlık -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Borc Takip"
+            android:text="Borç Takip"
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#212121"
@@ -25,12 +25,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Genel Bakis"
+            android:text="Genel Bakış"
             android:textSize="16sp"
             android:textColor="#757575"
             android:layout_marginBottom="24dp"/>
 
-        <!-- Toplam Bakiye Karti -->
+        <!-- Toplam Bakiye Kartı -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     android:id="@+id/tvTotalBalance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 TL"
+                    android:text="₺0"
                     android:textSize="48sp"
                     android:textStyle="bold"
                     android:textColor="#2196F3"/>
@@ -75,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(Alacak - Borc)"
+                    android:text="(Alacak - Borç)"
                     android:textSize="14sp"
                     android:textColor="#9E9E9E"
                     android:layout_marginTop="4dp"/>
@@ -84,7 +84,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Alacaklar Karti -->
+        <!-- Alacaklar Kartı -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardReceivable"
             android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                 android:orientation="horizontal"
                 android:padding="20dp">
 
-                <!-- Ikon -->
+                <!-- İkon -->
                 <LinearLayout
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="^"
+                        android:text="↑"
                         android:textSize="32sp"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF"/>
@@ -131,7 +131,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alacaklarim"
+                        android:text="Alacaklarım"
                         android:textSize="16sp"
                         android:textColor="#757575"/>
 
@@ -139,7 +139,7 @@
                         android:id="@+id/tvTotalReceivable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 TL"
+                        android:text="₺0"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         android:textColor="#4CAF50"
@@ -156,11 +156,11 @@
 
                 </LinearLayout>
 
-                <!-- Ok isareti -->
+                <!-- Ok işareti -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=">"
+                    android:text="›"
                     android:textSize="32sp"
                     android:textColor="#BDBDBD"
                     android:layout_gravity="center_vertical"/>
@@ -169,7 +169,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Borclar Karti -->
+        <!-- Borçlar Kartı -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardPayable"
             android:layout_width="match_parent"
@@ -186,7 +186,7 @@
                 android:orientation="horizontal"
                 android:padding="20dp">
 
-                <!-- Ikon -->
+                <!-- İkon -->
                 <LinearLayout
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -196,7 +196,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="v"
+                        android:text="↓"
                         android:textSize="32sp"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF"/>
@@ -215,7 +215,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Borclarim"
+                        android:text="Borçlarım"
                         android:textSize="16sp"
                         android:textColor="#757575"/>
 
@@ -223,7 +223,7 @@
                         android:id="@+id/tvTotalPayable"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 TL"
+                        android:text="₺0"
                         android:textSize="28sp"
                         android:textStyle="bold"
                         android:textColor="#F44336"
@@ -240,11 +240,11 @@
 
                 </LinearLayout>
 
-                <!-- Ok isareti -->
+                <!-- Ok işareti -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=">"
+                    android:text="›"
                     android:textSize="32sp"
                     android:textColor="#BDBDBD"
                     android:layout_gravity="center_vertical"/>

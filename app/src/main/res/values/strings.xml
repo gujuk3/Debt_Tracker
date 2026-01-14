@@ -1,58 +1,89 @@
 <resources>
-    <string name="app_name">Borc Takip</string>
+    <string name="app_name">Borç Takip</string>
 
     <!-- Dashboard -->
-    <string name="dashboard_title">Borc Takip</string>
-    <string name="overview">Genel Bakis</string>
+    <string name="dashboard_title">Borç Takip</string>
+    <string name="overview">Genel Bakış</string>
     <string name="net_status">Net Durum</string>
-    <string name="receivables">Alacaklarim</string>
-    <string name="payables">Borclarim</string>
+    <string name="receivables">Alacaklarım</string>
+    <string name="payables">Borçlarım</string>
 
     <!-- Add Debt -->
     <string name="add_receivable">Yeni Alacak Ekle</string>
-    <string name="add_payable">Yeni Borc Ekle</string>
-    <string name="person_name">Kisi Adi</string>
-    <string name="amount">Tutar (TL)</string>
-    <string name="description">Aciklama (Opsiyonel)</string>
+    <string name="add_payable">Yeni Borç Ekle</string>
+    <string name="person_name">Kişi Adı</string>
+    <string name="amount">Tutar (₺)</string>
+    <string name="description">Açıklama (Opsiyonel)</string>
     <string name="date">Tarih</string>
-    <string name="select_date">Tarih Sec</string>
+    <string name="select_date">Tarih Seç</string>
     <string name="due_date">Vade Tarihi (Opsiyonel)</string>
-    <string name="select_due_date">Vade Tarihi Sec</string>
-    <string name="not_selected">Secilmedi</string>
+    <string name="select_due_date">Vade Tarihi Seç</string>
+    <string name="not_selected">Seçilmedi</string>
     <string name="add_to_calendar">Takvime ekle</string>
-    <string name="enable_notification">Hatirlatici bildirim gonder</string>
+    <string name="enable_notification">Hatırlatıcı bildirim gönder</string>
     <string name="save">Kaydet</string>
     <string name="saved">Kaydedildi</string>
 
     <!-- Debt Detail -->
     <string name="details">Detaylar</string>
-    <string name="person">Kisi</string>
-    <string name="type">Tur</string>
+    <string name="person">Kişi</string>
+    <string name="type">Tür</string>
     <string name="receivable">Alacak</string>
-    <string name="payable">Borc</string>
-    <string name="no_description">Aciklama yok</string>
-    <string name="mark_as_paid">Odendi Olarak Isaretle</string>
-    <string name="marked_as_paid">Odendi olarak isaretlendi</string>
-    <string name="share">Paylas</string>
+    <string name="payable">Borç</string>
+    <string name="no_description">Açıklama yok</string>
+    <string name="mark_as_paid">Ödendi Olarak İşaretle</string>
+    <string name="marked_as_paid">Ödendi olarak işaretlendi</string>
+    <string name="share">Paylaş</string>
     <string name="delete">Sil</string>
     <string name="deleted">Silindi</string>
-    <string name="delete_confirmation">Bu kaydi silmek istediginize emin misiniz?</string>
-    <string name="cancel">Iptal</string>
+    <string name="delete_confirmation">Bu kaydı silmek istediğinize emin misiniz?</string>
+    <string name="cancel">İptal</string>
 
     <!-- Validation -->
-    <string name="name_required">Isim gerekli</string>
+    <string name="name_required">İsim gerekli</string>
     <string name="amount_required">Tutar gerekli</string>
 
     <!-- Notifications -->
-    <string name="notification_channel_name">Borc Hatirlatici</string>
-    <string name="notification_channel_desc">Borc odeme hatirlatmalari</string>
-    <string name="tomorrow_payment">Yarin Odeme Gunu!</string>
-    <string name="today_payment">Bugun Odeme Gunu!</string>
+    <string name="notification_channel_name">Borç Hatırlatıcı</string>
+    <string name="notification_channel_desc">Borç ödeme hatırlatmaları</string>
+    <string name="tomorrow_payment">Yarın Ödeme Günü!</string>
+    <string name="today_payment">Bugün Ödeme Günü!</string>
     <string name="notification_permission_denied">Bildirim izni verilmedi</string>
 
     <!-- Calendar -->
-    <string name="calendar_not_found">Takvim uygulamasi bulunamadi</string>
+    <string name="calendar_not_found">Takvim uygulaması bulunamadı</string>
 
     <!-- Share Message -->
-    <string name="share_title">Borc Bilgisi</string>
+    <string name="share_title">Borç Bilgisi</string>
+
+    <!-- Search and Filter -->
+    <string name="search_hint">Kişi adı ile ara...</string>
+    <string name="sort_by">Sırala</string>
+    <string name="sort_by_date">Tarihe Göre</string>
+    <string name="sort_by_amount">Tutara Göre</string>
+    <string name="sort_by_name">İsme Göre</string>
+    <string name="sort_by_due_date">Vade Tarihine Göre</string>
+    <string name="filter">Filtrele</string>
+    <string name="show_all">Tümü</string>
+    <string name="show_paid">Ödenenler</string>
+    <string name="show_unpaid">Ödenmeyenler</string>
+
+    <!-- Export -->
+    <string name="export">Dışa Aktar</string>
+    <string name="export_pdf">PDF Olarak</string>
+    <string name="export_excel">Excel Olarak</string>
+    <string name="export_success">Dosya kaydedildi</string>
+    <string name="export_error">Dışa aktarma hatası</string>
+
+    <!-- QR Code -->
+    <string name="qr_code">QR Kod</string>
+    <string name="generate_qr">QR Kod Oluştur</string>
+    <string name="scan_qr">QR Kod Tara</string>
+
+    <!-- Recurring -->
+    <string name="recurring">Tekrarlayan</string>
+    <string name="recurring_debt">Tekrarlayan Borç</string>
+    <string name="repeat_monthly">Aylık Tekrarla</string>
+    <string name="repeat_weekly">Haftalık Tekrarla</string>
+    <string name="no_repeat">Tekrarlama</string>
 </resources>

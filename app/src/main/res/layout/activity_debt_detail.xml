@@ -46,7 +46,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kisi"
+                        android:text="Kişi"
                         android:textSize="14sp"
                         android:textColor="#757575"/>
 
@@ -91,7 +91,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tur"
+                        android:text="Tür"
                         android:textSize="14sp"
                         android:textColor="#757575"/>
 
@@ -116,7 +116,7 @@
                         android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15 Aralik 2024"
+                        android:text="15 Aralık 2024"
                         android:textSize="18sp"
                         android:textColor="#212121"
                         android:layout_marginTop="4dp"
@@ -136,7 +136,7 @@
                         android:id="@+id/tvDueDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20 Aralik 2024"
+                        android:text="20 Aralık 2024"
                         android:textSize="18sp"
                         android:textColor="#FF5722"
                         android:textStyle="bold"
@@ -147,7 +147,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Aciklama"
+                        android:text="Açıklama"
                         android:textSize="14sp"
                         android:textColor="#757575"/>
 
@@ -155,7 +155,7 @@
                         android:id="@+id/tvDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yemek parasi"
+                        android:text="Yemek parası"
                         android:textSize="16sp"
                         android:textColor="#212121"
                         android:layout_marginTop="4dp"/>
@@ -168,7 +168,7 @@
                 android:id="@+id/btnMarkPaid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Odendi Olarak Isaretle"
+                android:text="Ödendi Olarak İşaretle"
                 android:textSize="16sp"
                 android:padding="16dp"
                 android:layout_marginBottom="8dp"/>
@@ -177,7 +177,17 @@
                 android:id="@+id/btnShare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Paylas"
+                android:text="Paylaş"
+                android:textSize="16sp"
+                android:padding="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnQrCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="QR Kod Oluştur"
                 android:textSize="16sp"
                 android:padding="16dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
