@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:background="#F5F5F5">
 
-    <!-- Toolbar with back button -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Kisi Adi"
+                android:hint="Kişi Adı"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -62,7 +61,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tutar (TL)"
+                android:hint="Tutar (₺)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -79,7 +78,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Aciklama (Opsiyonel)"
+                android:hint="Açıklama (Opsiyonel)"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginBottom="16dp">
 
@@ -107,7 +106,7 @@
                 android:id="@+id/tvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15 Aralik 2024"
+                android:text="15 Aralık 2024"
                 android:textSize="18sp"
                 android:textColor="#212121"
                 android:padding="12dp"
@@ -118,7 +117,7 @@
                 android:id="@+id/btnSelectDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tarih Sec"
+                android:text="Tarih Seç"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_marginBottom="16dp"/>
 
@@ -135,7 +134,7 @@
                 android:id="@+id/tvDueDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Secilmedi"
+                android:text="Seçilmedi"
                 android:textSize="18sp"
                 android:textColor="#212121"
                 android:padding="12dp"
@@ -146,11 +145,28 @@
                 android:id="@+id/btnSelectDueDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vade Tarihi Sec"
+                android:text="Vade Tarihi Seç"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Takvim ve Bildirim Secenekleri -->
+            <!-- Tekrarlama -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tekrarlama"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:layout_marginBottom="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerRecurring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Takvim ve Bildirim Seçenekleri -->
             <CheckBox
                 android:id="@+id/cbAddToCalendar"
                 android:layout_width="match_parent"
@@ -164,7 +180,7 @@
                 android:id="@+id/cbEnableNotification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hatirlatici bildirim gonder"
+                android:text="Hatırlatıcı bildirim gönder"
                 android:textSize="16sp"
                 android:enabled="false"
                 android:layout_marginBottom="8dp"/>
@@ -173,7 +189,7 @@
                 android:id="@+id/tvCheckboxHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="* Takvim ve bildirim icin vade tarihi secin"
+                android:text="* Takvim ve bildirim için vade tarihi seçin"
                 android:textSize="12sp"
                 android:textColor="#9E9E9E"
                 android:layout_marginBottom="24dp"/>

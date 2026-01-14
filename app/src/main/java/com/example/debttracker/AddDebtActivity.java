@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class AddDebtActivity extends AppCompatActivity {
     private TextView tvDate, tvTitle, tvDueDate, tvCheckboxHint;
     private Button btnSave, btnSelectDate, btnSelectDueDate;
     private CheckBox cbAddToCalendar, cbEnableNotification;
+    private Spinner spinnerRecurring;
     private Toolbar toolbar;
 
     private DatabaseHelper dbHelper;
@@ -59,6 +62,7 @@ public class AddDebtActivity extends AppCompatActivity {
         setupToolbar();
         setupDatePicker();
         setupDueDatePicker();
+        setupRecurringSpinner();
         setupSaveButton();
         setupKeyboardActions();
         setupPermissionLauncher();
@@ -82,6 +86,7 @@ public class AddDebtActivity extends AppCompatActivity {
         cbAddToCalendar = findViewById(R.id.cbAddToCalendar);
         cbEnableNotification = findViewById(R.id.cbEnableNotification);
         tvCheckboxHint = findViewById(R.id.tvCheckboxHint);
+        spinnerRecurring = findViewById(R.id.spinnerRecurring);
 
         calendar = Calendar.getInstance();
         dueDateCalendar = Calendar.getInstance();
@@ -199,9 +204,26 @@ public class AddDebtActivity extends AppCompatActivity {
         tvCheckboxHint.setVisibility(hasDueDate ? View.GONE : View.VISIBLE);
 
         if (!hasDueDate) {
-            tvDueDate.setText("Secilmedi");
+            tvDueDate.setText("Seçilmedi");
             cbAddToCalendar.setChecked(false);
             cbEnableNotification.setChecked(false);
+        }
+    }
+
+    private void setupRecurringSpinner() {
+        String[] recurringOptions = {"Tekrarlama", "Haftalık Tekrarla", "Aylık Tekrarla"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, recurringOptions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRecurring.setAdapter(adapter);
+    }
+
+    private String getSelectedRecurringType() {
+        int position = spinnerRecurring.getSelectedItemPosition();
+        switch (position) {
+            case 1: return "WEEKLY";
+            case 2: return "MONTHLY";
+            default: return "NONE";
         }
     }
 
@@ -225,9 +247,10 @@ public class AddDebtActivity extends AppCompatActivity {
 
             double amount = Double.parseDouble(amountStr);
             boolean notificationEnabled = cbEnableNotification.isChecked();
+            String recurringType = getSelectedRecurringType();
 
             // Veritabanına kaydet
-            long debtId = dbHelper.addDebt(personName, amount, type, description, selectedDate, selectedDueDate, notificationEnabled);
+            long debtId = dbHelper.addDebt(personName, amount, type, description, selectedDate, selectedDueDate, notificationEnabled, recurringType);
 
             // Takvime ekle
             if (cbAddToCalendar.isChecked() && selectedDueDate > 0) {

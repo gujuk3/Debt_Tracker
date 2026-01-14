@@ -2,10 +2,12 @@ package com.example.debttracker;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,9 @@ import com.example.debttracker.database.DatabaseHelper;
 import com.example.debttracker.database.Debt;
 import com.example.debttracker.notification.NotificationHelper;
 import com.example.debttracker.service.CurrencyService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +30,7 @@ import java.util.Locale;
 public class DebtDetailActivity extends AppCompatActivity {
     private TextView tvPersonName, tvAmount, tvAmountUsd, tvType, tvDate, tvDueDate, tvDescription;
     private TextView tvDueDateLabel;
-    private Button btnMarkPaid, btnDelete, btnShare;
+    private Button btnMarkPaid, btnDelete, btnShare, btnQrCode;
 
     private DatabaseHelper dbHelper;
     private Debt debt;
@@ -66,6 +71,7 @@ public class DebtDetailActivity extends AppCompatActivity {
         btnMarkPaid = findViewById(R.id.btnMarkPaid);
         btnDelete = findViewById(R.id.btnDelete);
         btnShare = findViewById(R.id.btnShare);
+        btnQrCode = findViewById(R.id.btnQrCode);
     }
 
     private void loadDebtDetails() {
@@ -157,6 +163,43 @@ public class DebtDetailActivity extends AppCompatActivity {
         });
 
         btnShare.setOnClickListener(v -> shareDebt());
+
+        btnQrCode.setOnClickListener(v -> showQrCode());
+    }
+
+    private void showQrCode() {
+        if (debt == null) return;
+
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("tr", "TR"));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", new Locale("tr"));
+
+        StringBuilder qrContent = new StringBuilder();
+        qrContent.append("BORÇ BİLGİSİ\n");
+        qrContent.append("Kişi: ").append(debt.getPersonName()).append("\n");
+        qrContent.append("Tutar: ").append(currencyFormat.format(debt.getAmount())).append("\n");
+        qrContent.append("Tür: ").append(debt.getType().equals("RECEIVABLE") ? "Alacak" : "Borç").append("\n");
+        qrContent.append("Tarih: ").append(dateFormat.format(new Date(debt.getDate())));
+
+        if (debt.getDueDate() > 0) {
+            qrContent.append("\nVade: ").append(dateFormat.format(new Date(debt.getDueDate())));
+        }
+
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(qrContent.toString(), BarcodeFormat.QR_CODE, 400, 400);
+
+            ImageView imageView = new ImageView(this);
+            imageView.setImageBitmap(bitmap);
+            imageView.setPadding(20, 20, 20, 20);
+
+            new AlertDialog.Builder(this)
+                    .setTitle("QR Kod")
+                    .setView(imageView)
+                    .setPositiveButton("Tamam", null)
+                    .show();
+        } catch (WriterException e) {
+            Toast.makeText(this, "QR kod oluşturulamadı", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void shareDebt() {
